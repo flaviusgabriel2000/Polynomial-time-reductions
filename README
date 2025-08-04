@@ -1,53 +1,37 @@
-// Usturoi Flavius-Gabriel, 324CD
-// Reduceri polinomiale
+// Polynomial-time reductions
+
+                        IMPLEMENTATION
+
+1. RETELE   - For this problem, I decided to implement the recommended reduction,
+	      namely k-clique <=P SAT. After the problem data is read from stdin, the graph of
+	      the current instance is built. Further, to build the sat.cnf file necessary for
+	      the Oracle, I created a list containing O(nk) variables coded with values starting
+	      from 1. Then, after applying the constraints of the k-clique problem, O(nk^2) clauses
+	      are generated. All these clauses are introduced in the mentioned file that will be
+	      passed on to the Oracle. The decoding of the result and its interpretation, as well
+	      as other details related to the implementation, are specified through comments in
+	      the source code.
 
 
-      In cadrul acestei teme, am decis sa folosesc limbajul Java. Ideea
-generala in vederea rezolvarii acesteia a fost impartirea in clase conform
-recomandarii din enunt. Astfel, clasele TaskX (unde X reprezinta numarul
-problemei rezolvate) mostenesc clasa abstracta deja oferita in schelet.
-Modularizarea este asigurata prin implementarea celor 5 metode abstracte
-definite in superclasa.
+2. RECLAME  - For this problem, I chose to apply the same reduction from the previous problem,
+	      namely k-clique <=P SAT, but this time we will apply it to the graph transposed
+	      to the initial one (the edges that do not exist in the initial graph will be edges
+	      in this graph). Since it is the same reduction, O(nk) variables and O(nk^2) clauses
+	      are introduced that will be transmitted to the Oracle. Following its response,
+	      the vertices that form the extended group of people are decoded and obtained.
+	      We need the essential group, and this is obtained by taking the other vertices
+	      of the graph.
+
+3. REGISTRE - Register allocation is a real- world problem, often associated with the graph
+	      coloring problem. Thus, I decided to perform the k-coloring <=P SAT reduction.
+	      Similar to the previous task, after the problem data is read from stdin, the
+	      graph of the current instance is constructed with its help. Also, O(nk) variables
+	      are introduced that are coded starting with 1 and O(nk^2) clauses after the problem
+	      constraints are applied. This time, the interpretation of the Oracle's response
+	      differs from the previous task and is specified in the comments in the code.
 
 
-
-                        REZOLVAREA TASKURILOR
-
-1. RETELE   - In cadrul acestei probleme, am decis sa realizez reducerea
-              recomandata in enuntul temei si anume k-clique <=P SAT. Dupa
-              ce datele problemei sunt citite de la stdin, cu ajutorul lor
-              se construieste graful instantei curente. Mai departe, pentru
-              construirea fisierului sat.cnf necesar Oracolului, am creat
-              o lista ce contine O(nk) variabile codificate cu valori pornind
-              de la 1. Apoi, dupa ce se aplica constrangerile problemei k-clique,
-              se genereaza O(nk^2) clauze. Toate aceste clauze sunt introduse
-              in fisierul mentionat care va fi dat mai departe Oracolului.
-              Descifrarea rezultatului si interpretarea lui, precum si alte
-              detalii legate de implementare, sunt precizate prin comentarii
-              in codul sursa.
-
-2. RECLAME  - Pentru aceasta problema, am ales sa aplic tot reducerea de la task-ul
-              precedent si anume k-clique <=P SAT, insa de data aceasta o vom aplica
-              pe graful transpus celui initial (muchiile care nu exista in graful
-              initial vor fi muchii in acest graf). Fiind vorba de aceeasi reducere,
-              sunt introduse O(nk) variabile si O(nk^2) clauze care vor fi transmise
-              catre Oracol. In urma raspunsului acestuia, se decodifica si se obtin
-              varfurile care formeaza grupul extins de persoane. Avem nevoie de grupul
-              esential, iar acesta se obtine luand fix celelalte varfuri ale grafului.
-
-3. REGISTRE - Alocarea registrilor este o problema din realitate, adesea aso-
-              ciata cu problema colorarii grafurilor. Astfel, am decis sa reali-
-              zez reducerea k-coloring <=P SAT. Similar task-ului anterior, dupa ce
-              datele problemei sunt citite de la stdin, cu ajutorul lor se constru-
-              ieste graful instantei curente. De asemenea, sunt introduse O(nk)
-              variabile ce sunt codificate incepand cu 1 si O(nk^2) clauze dupa
-              aplicarea constrangerilor problemei. De aceasta data, interpretarea
-              raspunsului Oracolului difera de cea din cadrul task-ului anterior si
-              este precizata in comentariile din cod.
-
-
-
-    Implementarea structurii de date de tip graf se afla in clasa Graph. Aceasta
-contine metode clasice de operatii asupra acestei structuri, ce servesc la rezol-
-varea task-urilor temei. Citirea de la stdin si din fisier, respectiv afisarea
-la stdout si scrierea in fisier se realizeaza cu BufferedReader si BufferedWriter.
+	The implementation of the graph data structure is in the Graph class. It contains
+classical methods for operations on this structure, which serve to solve the tasks of the
+topic. Reading from stdin and from the file, respectively displaying on stdout and writing
+to the file is done with BufferedReader and BufferedWriter.
