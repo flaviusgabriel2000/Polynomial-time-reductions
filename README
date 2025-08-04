@@ -1,0 +1,53 @@
+// Usturoi Flavius-Gabriel, 324CD
+// Reduceri polinomiale
+
+
+      In cadrul acestei teme, am decis sa folosesc limbajul Java. Ideea
+generala in vederea rezolvarii acesteia a fost impartirea in clase conform
+recomandarii din enunt. Astfel, clasele TaskX (unde X reprezinta numarul
+problemei rezolvate) mostenesc clasa abstracta deja oferita in schelet.
+Modularizarea este asigurata prin implementarea celor 5 metode abstracte
+definite in superclasa.
+
+
+
+                        REZOLVAREA TASKURILOR
+
+1. RETELE   - In cadrul acestei probleme, am decis sa realizez reducerea
+              recomandata in enuntul temei si anume k-clique <=P SAT. Dupa
+              ce datele problemei sunt citite de la stdin, cu ajutorul lor
+              se construieste graful instantei curente. Mai departe, pentru
+              construirea fisierului sat.cnf necesar Oracolului, am creat
+              o lista ce contine O(nk) variabile codificate cu valori pornind
+              de la 1. Apoi, dupa ce se aplica constrangerile problemei k-clique,
+              se genereaza O(nk^2) clauze. Toate aceste clauze sunt introduse
+              in fisierul mentionat care va fi dat mai departe Oracolului.
+              Descifrarea rezultatului si interpretarea lui, precum si alte
+              detalii legate de implementare, sunt precizate prin comentarii
+              in codul sursa.
+
+2. RECLAME  - Pentru aceasta problema, am ales sa aplic tot reducerea de la task-ul
+              precedent si anume k-clique <=P SAT, insa de data aceasta o vom aplica
+              pe graful transpus celui initial (muchiile care nu exista in graful
+              initial vor fi muchii in acest graf). Fiind vorba de aceeasi reducere,
+              sunt introduse O(nk) variabile si O(nk^2) clauze care vor fi transmise
+              catre Oracol. In urma raspunsului acestuia, se decodifica si se obtin
+              varfurile care formeaza grupul extins de persoane. Avem nevoie de grupul
+              esential, iar acesta se obtine luand fix celelalte varfuri ale grafului.
+
+3. REGISTRE - Alocarea registrilor este o problema din realitate, adesea aso-
+              ciata cu problema colorarii grafurilor. Astfel, am decis sa reali-
+              zez reducerea k-coloring <=P SAT. Similar task-ului anterior, dupa ce
+              datele problemei sunt citite de la stdin, cu ajutorul lor se constru-
+              ieste graful instantei curente. De asemenea, sunt introduse O(nk)
+              variabile ce sunt codificate incepand cu 1 si O(nk^2) clauze dupa
+              aplicarea constrangerilor problemei. De aceasta data, interpretarea
+              raspunsului Oracolului difera de cea din cadrul task-ului anterior si
+              este precizata in comentariile din cod.
+
+
+
+    Implementarea structurii de date de tip graf se afla in clasa Graph. Aceasta
+contine metode clasice de operatii asupra acestei structuri, ce servesc la rezol-
+varea task-urilor temei. Citirea de la stdin si din fisier, respectiv afisarea
+la stdout si scrierea in fisier se realizeaza cu BufferedReader si BufferedWriter.
